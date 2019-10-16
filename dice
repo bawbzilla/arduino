@@ -6,7 +6,7 @@ int dice3;
 int dice2;
 int dice1;
 Sleep sleep;
-unsigned long sleepTime; //how long you want the arduino to sleep
+unsigned long sleepTime; //sets how long arduino sleeps for
 
 void setup()
 {
@@ -29,32 +29,31 @@ pinMode(A3, OUTPUT);
 pinMode(A4, OUTPUT);
 pinMode(A5, OUTPUT);
 
+
+// d2
+pinMode(6, INPUT);
+digitalWrite(6, HIGH);
+// d3
+pinMode(7, INPUT);
+digitalWrite(7, HIGH);
+// d4
+pinMode(13, INPUT);
+digitalWrite(13, HIGH);
 // d6
 pinMode(8, INPUT);
 digitalWrite(8, HIGH);
 // d8
 pinMode(12, INPUT);
 digitalWrite(12, HIGH);
-// d4
-pinMode(13, INPUT);
-digitalWrite(13, HIGH);
-// d3
-pinMode(7, INPUT);
-digitalWrite(7, HIGH);
-// d2
-pinMode(6, INPUT);
-digitalWrite(6, HIGH);
 
-sleepTime = 50000; //set sleep time in ms, max sleep time is 49.7 days
+//sleep code
+sleepTime = 50000; //sleep time in ms, not yet implemented in this build
 
 }
 
-
-
+// main code
 void loop()
 {
-
-  
   delay(100);
   //off();
    
@@ -231,6 +230,7 @@ else
  Serial.println("Else"); 
 }
 }
+// code for random number effect prior to rolling
 void mix()
 {
 Aone();
@@ -317,6 +317,7 @@ delay(100);
 off();
 delay(400);
  }
+//turns off LCD
 void off()
 {
     digitalWrite(2, LOW);
@@ -337,7 +338,7 @@ void off()
 }
 
 
-
+// code for 7 segment LCD screens
 void Anort()
 {
   digitalWrite(2, HIGH);
