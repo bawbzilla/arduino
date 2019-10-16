@@ -1,0 +1,488 @@
+#include <Sleep_n0m1.h>
+
+int dice5;
+int dice4;
+int dice3;
+int dice2;
+int dice1;
+Sleep sleep;
+unsigned long sleepTime; //how long you want the arduino to sleep
+
+void setup()
+{
+  
+Serial.begin(9600); 
+
+pinMode(2, OUTPUT);
+pinMode(3, OUTPUT);
+pinMode(4, OUTPUT);
+pinMode(5, OUTPUT);
+pinMode(6, OUTPUT);
+pinMode(7, OUTPUT);
+pinMode(9, OUTPUT);
+pinMode(10, OUTPUT);
+pinMode(11, OUTPUT);
+pinMode(13, OUTPUT);
+pinMode(A1, OUTPUT);
+pinMode(A2, OUTPUT);
+pinMode(A3, OUTPUT);
+pinMode(A4, OUTPUT);
+pinMode(A5, OUTPUT);
+
+// d6
+pinMode(8, INPUT);
+digitalWrite(8, HIGH);
+// d8
+pinMode(12, INPUT);
+digitalWrite(12, HIGH);
+// d4
+pinMode(13, INPUT);
+digitalWrite(13, HIGH);
+// d3
+pinMode(7, INPUT);
+digitalWrite(7, HIGH);
+// d2
+pinMode(6, INPUT);
+digitalWrite(6, HIGH);
+
+sleepTime = 50000; //set sleep time in ms, max sleep time is 49.7 days
+
+}
+
+
+
+void loop()
+{
+
+  
+  delay(100);
+  //off();
+   
+dice1 = random(1,6);
+dice2 = random(1,9);
+dice3 = random(1,5);
+dice4 = random(1,4);
+dice5 = random(1,3);
+
+//code for d2 (deactivated)
+if(digitalRead(6) == LOW)
+{
+  mix();
+  
+      
+         if(dice5 == 1 )
+        {
+          Bone();
+        }
+        else if(dice5 == 2)
+        {
+          Btwo();
+        }
+        delay(5500);
+        
+        
+}
+
+//code for d3
+if(digitalRead(7) == LOW)
+{
+  mix();
+  
+      
+         if(dice4 == 1 )
+        {
+          Bone();
+        }
+        else if(dice4 == 2)
+        {
+          Btwo();
+        }
+        else if(dice4 == 3)
+        {
+          Bthree();
+        }
+        delay(5500);
+        
+}
+
+//code for d4
+if(digitalRead(13) == LOW)
+{
+  mix();
+  
+      
+         if(dice3 == 1 )
+        {
+          Bone();
+        }
+        else if(dice3 == 2)
+        {
+          Btwo();
+        }
+        else if(dice3 == 3)
+        {
+          Bthree();
+        }
+        else if(dice3 == 4)
+        {
+          Bfour();
+        }
+        delay(500);
+        
+}
+//code for d6
+if(digitalRead(8) == LOW)
+{
+  mix();
+  
+      
+         if(dice1 == 1 )
+        {
+          Bone();
+        }
+        else if(dice1 == 2)
+        {
+          Btwo();
+        }
+        else if(dice1 == 3)
+        {
+          Bthree();
+        }
+        else if(dice1 == 4)
+        {
+          Bfour();
+        }
+        else if(dice1 == 5)
+        {
+         Bfive(); 
+        }
+        else if(dice1 == 6)
+        {
+          Bsix();
+        }  
+        delay(500);
+   
+}
+//code for d8
+else if(digitalRead(12) == LOW)
+{
+  mix();
+  
+  if(dice2 == 1 )
+  {
+    Bone();
+  }
+  else if(dice2 == 2)
+  {
+    Btwo();
+  }
+  else if(dice2 == 3)
+  {
+    Bthree();
+  }
+  else if(dice2 == 4)
+  {
+    Bfour();
+  }
+  else if(dice2 == 5)
+  {
+   Bfive(); 
+  }
+  else if(dice2 == 6)
+  {
+    Bsix();
+  }       
+  else if(dice2 == 7)
+  {
+    Bseven();
+  }
+          else if(dice2 == 8)
+  {
+    Beight();
+  }
+ if(dice1 == 1 )
+  {
+    Aone();
+  }
+  else if(dice1 == 2)
+  {
+    Atwo();
+  }
+  else if(dice1 == 3)
+  {
+    Athree();
+  }
+  else if(dice1 == 4)
+  {
+    Afour();
+  }
+  else if(dice1 == 5)
+  {
+   Afive(); 
+  }
+  else if(dice1 == 6)
+  {
+    Asix();
+  }
+  delay(500);
+}
+else
+{
+ Serial.println("Else"); 
+}
+}
+void mix()
+{
+Aone();
+Bsix();
+delay(100);
+off();
+Atwo();
+Bfive();
+delay(100);
+off();
+Athree();
+Bfour();
+delay(100);
+off();
+Afour();
+Bthree();
+delay(100);
+off();
+Afive();
+Btwo();
+delay(100);
+off();
+Asix();
+Bone();
+
+delay(100);
+off();
+Anort();
+Bnort();
+delay(100);
+off();
+delay(100);
+Anort();
+Bnort();
+delay(100);
+off();
+delay(100);
+Anort();
+Bnort();
+delay(100);
+off();
+delay(100);
+Anort();
+Bnort();
+delay(100);
+off();
+delay(400);
+ }
+ void mix2()
+{
+
+Bsix();
+delay(100);
+off();
+Bfive();
+delay(100);
+off();
+Bfour();
+delay(100);
+off();
+Bthree();
+delay(100);
+off();
+Btwo();
+delay(100);
+off();
+Bone();
+delay(100);
+off();
+Bnort();
+delay(100);
+off();
+delay(100);
+Bnort();
+delay(100);
+off();
+delay(100);
+Bnort();
+delay(100);
+off();
+delay(100);
+Bnort();
+delay(100);
+off();
+delay(400);
+ }
+void off()
+{
+    digitalWrite(2, LOW);
+   digitalWrite(3, LOW);
+   digitalWrite(4, LOW);
+   digitalWrite(5, LOW);
+   digitalWrite(6, LOW);
+   digitalWrite(7, LOW);
+   digitalWrite(9, LOW);
+   digitalWrite(10, LOW);
+   digitalWrite(11, LOW);
+   digitalWrite(A1, LOW);
+   digitalWrite(A2, LOW);
+   digitalWrite(A3, LOW);
+   digitalWrite(A4, LOW);
+   digitalWrite(A5, LOW);
+    
+}
+
+
+
+void Anort()
+{
+  digitalWrite(2, HIGH);
+  digitalWrite(A1, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(3, HIGH);
+}
+void Aone()
+{
+   digitalWrite(A1, HIGH);
+   digitalWrite(7, HIGH);
+}
+
+void Atwo()
+{
+    digitalWrite(2, HIGH);
+    digitalWrite(A1, HIGH);
+    digitalWrite(4, HIGH);
+    digitalWrite(5, HIGH);
+    digitalWrite(6, HIGH);
+}
+
+void Athree()
+{
+  digitalWrite(2,HIGH);
+  digitalWrite(A1,HIGH);
+  digitalWrite(4,HIGH);
+  digitalWrite(7,HIGH);
+  digitalWrite(6,HIGH);
+}
+
+void Afour()
+{
+ digitalWrite(3,HIGH);
+digitalWrite(4,HIGH);
+digitalWrite(A1,HIGH);
+digitalWrite(7,HIGH);
+}
+
+void Afive()
+{
+ digitalWrite(2,HIGH);
+digitalWrite(3,HIGH);
+digitalWrite(4,HIGH);
+digitalWrite(7,HIGH);
+digitalWrite(6,HIGH);
+
+}
+
+void Asix()
+{
+ digitalWrite(2,HIGH);
+digitalWrite(3,HIGH);
+digitalWrite(4,HIGH);
+digitalWrite(7,HIGH);
+digitalWrite(6,HIGH);
+digitalWrite(5,HIGH);
+}
+
+void Aseven()
+{
+ digitalWrite(2,HIGH);
+digitalWrite(3,HIGH);
+digitalWrite(4,HIGH);
+digitalWrite(7,HIGH);
+digitalWrite(6,HIGH);
+digitalWrite(5,HIGH);
+}
+
+void Bnort()
+{
+  digitalWrite(A4, HIGH);
+  digitalWrite(A5, HIGH);
+  digitalWrite(A3, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(11, HIGH);
+  digitalWrite(10, HIGH);
+}
+void Bone()
+{
+   digitalWrite(A5, HIGH);
+   digitalWrite(11, HIGH);
+}
+
+void Btwo()
+{
+    digitalWrite(A4, HIGH);
+    digitalWrite(A5, HIGH);
+    digitalWrite(A2, HIGH);
+    digitalWrite(9, HIGH);
+    digitalWrite(10, HIGH);
+}
+
+void Bthree()
+{
+  digitalWrite(A4,HIGH);
+  digitalWrite(A5,HIGH);
+  digitalWrite(A2,HIGH);
+  digitalWrite(11,HIGH);
+  digitalWrite(10,HIGH);
+}
+
+void Bfour()
+{
+ digitalWrite(A3,HIGH);
+digitalWrite(A2,HIGH);
+digitalWrite(A5,HIGH);
+digitalWrite(11,HIGH);
+}
+
+void Bfive()
+{
+ digitalWrite(A4,HIGH);
+digitalWrite(A3,HIGH);
+digitalWrite(A2,HIGH);
+digitalWrite(11,HIGH);
+digitalWrite(10,HIGH);
+
+}
+
+void Bsix()
+{
+ digitalWrite(A4,HIGH);
+digitalWrite(A3,HIGH);
+digitalWrite(A2,HIGH);
+digitalWrite(9,HIGH);
+digitalWrite(10,HIGH);
+digitalWrite(11,HIGH);
+}
+
+void Bseven()
+{
+ digitalWrite(A4,HIGH);
+digitalWrite(A5,HIGH);
+digitalWrite(11,HIGH);
+}
+void Beight()
+{
+ digitalWrite(A4,HIGH);
+digitalWrite(A5,HIGH);
+digitalWrite(11,HIGH);
+digitalWrite(10,HIGH);
+digitalWrite(9,HIGH);
+digitalWrite(A3,HIGH);
+digitalWrite(A2,HIGH);
+}
